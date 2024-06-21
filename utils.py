@@ -1,3 +1,4 @@
+import inspect
 def print_trainable_parameters(model):
     """
     Prints the number of trainable parameters in the model.
@@ -5,6 +6,7 @@ def print_trainable_parameters(model):
     trainable_params = 0
     all_param = 0
     for name, param in model.named_parameters():
+        # print(name)
         if 'classifier' in name:
             continue
         all_param += param.numel()

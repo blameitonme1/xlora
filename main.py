@@ -1,4 +1,4 @@
-
+from xlora import *
 def get_data(dataset_name, cache_dir, local_dir=None):
     if local_dir is not None:
         import os
@@ -166,16 +166,14 @@ def main(args_out,
         )
         print_trainable_parameters(model)
 
-        if mode == "fourier":
-            from peft import FourierConfig, FourierModel
-            config = FourierConfig(
-                target_modules=["query", "value"],
-                modules_to_save=["classifier"],
-                n_frequency=n_frequency,
-                scale=args_out.scale
-            )
-            model = FourierModel(model, config, 'default')
-            model.set_extra_trainable(["classifier"])
+        if mode == "xlora":
+            set_xlora(model, dim=32)
+            for n, p in model.named_parameters():
+                if 'adapter' in n:
+                    p.requires_grad = True
+                else:
+                    p.requires_grad = False
+            model.classifier.requires_grad_(True)
         elif mode == "lora":
             from peft import LoraConfig, get_peft_model
             config = LoraConfig(
@@ -199,7 +197,7 @@ def main(args_out,
 
     model_name = model_name_or_path.split("/")[-1]
     
-    if mode == "fourier":
+    if mode == "fourier" or "xlora":
         save_id = f'{model_name}-{mode}-f{n_frequency}-{dataset_name}-f{10000}'
     elif mode == "lora":
         save_id = f'{model_name}-{mode}-r{lora_r}-a{lora_alpha}-d{lora_dropout}-{dataset_name}'
