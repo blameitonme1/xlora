@@ -9,6 +9,5 @@ CUDA_VISIBLE_DEVICES=0 python main.py \
     --n_trial 1 \
     --head_lr 8e-4 \
     --weight_decay 3e-4 \
-    --fft_lr 2e-2 \
-    --scale 300.0 \
+    --fft_lr 1e-2 \
     --share_entry
