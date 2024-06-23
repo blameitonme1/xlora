@@ -1,5 +1,5 @@
 # Non-linear Low-rank adaptation
-Improve low-rank adaptation with non-linear property to better approximate the $\Delta W$.
+Improve low-rank adaptation with non-linear property to better approximate the $\Delta W$, namely xlora.
 
 # Environment setup:
 ```bash
@@ -36,7 +36,7 @@ CUDA_VISIBLE_DEVICES=0 python main.py \
     --head_lr 8e-4 \
     --weight_decay 3e-4 \
     --fft_lr 1e-2 \
-    --mhsa_dim (dim you want for adapting MHSA) \
+    --mhsa_dim (dim you want to adapt MHSA) \
     --ffn_dim (dim you want to adapt FFN) \
-    --xlora_mode 1 
+    --xlora_mode (mode you want when deploying adapters) 
 ```
