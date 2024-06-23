@@ -1,4 +1,4 @@
-# Non-linear Low-rank adaptation
+# Non-linear Low-rank Adaptation
 Improve low-rank adaptation with non-linear property to better approximate the $\Delta W$, namely xlora.
 
 # Environment setup
