@@ -1,7 +1,7 @@
 # Non-linear Low-rank adaptation
 Improve low-rank adaptation with non-linear property to better approximate the $\Delta W$, namely xlora.
 
-# Environment setup:
+# Environment setup
 ```bash
 conda create -n xlora python=3.12
 pip install evaluate
