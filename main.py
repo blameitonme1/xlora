@@ -87,7 +87,9 @@ def main(args_out,
     results_dir: str,
     cache_dir: str,
     data_local_dir: str = None,
-    
+    mhsa_dim: int = 16,
+    ffn_dim: int = 16,
+    xlora_mode: int = 1,
 ):
 
     import os, torch
@@ -167,13 +169,14 @@ def main(args_out,
         print_trainable_parameters(model)
 
         if mode == "xlora":
-            set_xlora(model, dim=32)
+            set_xlora(model, xlora_mode, mhsa_dim, ffn_dim)
             for n, p in model.named_parameters():
                 if 'adapter' in n:
                     p.requires_grad = True
                 else:
                     p.requires_grad = False
             model.classifier.requires_grad_(True)
+
         elif mode == "lora":
             from peft import LoraConfig, get_peft_model
             config = LoraConfig(
@@ -332,5 +335,7 @@ if __name__ == "__main__":
         results_dir=args.results_dir,
         cache_dir=args.cache_dir,
         data_local_dir=args.data_local_dir,
-
+        mhsa_dim=args.mhsa_dim,
+        ffn_dim=args.ffn_dim,
+        xlora_mode=args.xlora_mode,
     )

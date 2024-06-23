@@ -55,6 +55,9 @@ parser.add_argument("--lora-alpha", type=int, default=16)
 parser.add_argument("--lora-dropout", type=float, default=0.1)
 
 parser.add_argument("--n_trial", type=int, default=1)
+parser.add_argument("--mhsa_dim", type=int, default=16)
+parser.add_argument("--ffn_dim", type=int, default=16)
+parser.add_argument("--xlora_mode", type=int, default=1)
 
 parser.add_argument("--results-dir", type=str, default="results")
 parser.add_argument("--cache-dir", type=str, default=os.path.join(os.getenv("HOME"), ".cache"))
