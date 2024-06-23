@@ -12,12 +12,14 @@ pip install transformer
 # Train xlora on several vision tasks
 
 There's different mode in xlora to allow flexible deployment of the adaptation:
+```
 xlora mode:
         1. vanilla xlora on mhsa q, v
         2. vanilla xlora on mhsa q, k, v
         3. vanilla xlora on ffn
         4. vanilla xlora on both mhsa q, v and ffn
         5. vanilla xlora on both mhsa q, k, v and ffn
+```
 
 Take a dataset like eurosat, just run
 ```bash
