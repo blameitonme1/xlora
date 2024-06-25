@@ -9,5 +9,7 @@ CUDA_VISIBLE_DEVICES=1 python main.py \
     --n_trial 1 \
     --head_lr 1e-3 \
     --weight_decay 3e-4 \
-    --fft_lr 3e-3 \
-    --share_entry 
+    --fft_lr 5e-3 \
+    --mhsa_dim 16 \
+    --ffn_dim 8 \
+    --xlora_mode 1 
