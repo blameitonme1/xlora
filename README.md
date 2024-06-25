@@ -11,7 +11,7 @@ pip install transformer
 
 # Train xlora on several vision tasks
 
-There's different modes in xLoRA to allow flexible deployment of the adaptation:
+There're different modes in xLoRA to allow flexible deployment of the adaptation:
 ```
 xlora mode:
         1. vanilla xlora on mhsa q, v
