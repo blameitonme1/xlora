@@ -172,6 +172,7 @@ def main(args_out,
             set_xlora(model, xlora_mode, mhsa_dim, ffn_dim)
             for n, p in model.named_parameters():
                 if 'adapter' in n:
+                    # print(n)
                     p.requires_grad = True
                 else:
                     p.requires_grad = False
@@ -200,8 +201,8 @@ def main(args_out,
 
     model_name = model_name_or_path.split("/")[-1]
     
-    if mode == "fourier" or "xlora":
-        save_id = f'{model_name}-{mode}-f{n_frequency}-{dataset_name}-f{10000}'
+    if mode == "xlora":
+        save_id = f'{model_name}-{mode}-{dataset_name}-xloramode{xlora_mode}-dim1{mhsa_dim}-dim2{ffn_dim}'
     elif mode == "lora":
         save_id = f'{model_name}-{mode}-r{lora_r}-a{lora_alpha}-d{lora_dropout}-{dataset_name}'
     elif mode in ["head", "full"]:

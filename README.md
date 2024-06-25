@@ -1,5 +1,5 @@
 # Non-linear Low-rank Adaptation
-Improve low-rank adaptation with non-linear property to better approximate the $\Delta W$, namely xlora.
+Improve low-rank adaptation with non-linear property to better approximate the $\Delta W$, namely xLoRA.
 
 # Environment setup
 ```bash
@@ -11,7 +11,7 @@ pip install transformer
 
 # Train xlora on several vision tasks
 
-There's different mode in xlora to allow flexible deployment of the adaptation:
+There's different modes in xLoRA to allow flexible deployment of the adaptation:
 ```
 xlora mode:
         1. vanilla xlora on mhsa q, v
@@ -35,8 +35,8 @@ CUDA_VISIBLE_DEVICES=0 python main.py \
     --n_trial 1 \
     --head_lr 8e-4 \
     --weight_decay 3e-4 \
-    --fft_lr 1e-2 \
-    --mhsa_dim (dim you want to adapt MHSA) \
-    --ffn_dim (dim you want to adapt FFN) \
-    --xlora_mode (mode you want when deploying adapters) 
+    --fft_lr learning_rate_you_want \
+    --mhsa_dim dim_you_want_to_adapt_MHSA \
+    --ffn_dim dim_you_want_to_adapt_FFN \
+    --xlora_mode mode_you_want_when_deploying_adapters 
 ```
